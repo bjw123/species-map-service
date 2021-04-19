@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+//*use cfenv to access uri in future for security purposes
 mongoose.connect('mongodb+srv://admin:admin@cluster0.5cdt0.mongodb.net/geodata', {useNewUrlParser: true, useUnifiedTopology: true});
 let db = mongoose.connection;
 
