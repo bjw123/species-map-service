@@ -21,4 +21,38 @@ router.get('/wgk',async (req, res) => {
     res.send(data)
 })
 
+
+
+/*
+const DiscoveryV1 = require('ibm-watson/discovery/v1');
+const { IamAuthenticator } = require('ibm-watson/auth');
+
+const discovery = new DiscoveryV1({
+  version: '2019-04-30',
+  authenticator: new IamAuthenticator({
+    apikey: '{WqipI59T3pPZlTshaCoalrdNcrcp0k8vKuAaJcZSdOdp}',
+  }),
+  serviceUrl: '{https://api.us-south.discovery.watson.cloud.ibm.com/instances/20965335-5ee4-4058-b3c0-ef976fc70e09}',
+});
+
+const queryParams = {
+  environmentId: '{system}',
+  collectionId: '{news-en}',
+  query: 'host::abc.net.au text:Quokka'
+};
+
+discovery.query(queryParams)
+    .then(queryResponse => {
+      console.log(JSON.stringify(queryResponse, null, 2));
+    })
+    .catch(err => {
+      console.log('error:', err);
+    });
+
+ */
+
+router.get('/watson/discovery', (req, res) =>{
+            res.send("sentiment analusis, implemented in next sprint")
+})
+
 module.exports = router

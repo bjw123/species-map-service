@@ -1,24 +1,18 @@
 var express = require("express");
 var app = express();
 var cfenv = require("cfenv");
-//var bodyParser = require('body-parser')
 const mongoose = require("mongoose")
-
-const cors = require('cors');
-
-app.use(cors());
-//Security features
-
-const helmet = require("helmet")
-app.use(helmet())
+var bodyParser = require('body-parser')
+const request = require('request');
+//const helmet = require("helmet")
+//app.use(helmet())
 
 // parse application/x-www-form-urlencoded
-//app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
-//app.use(bodyParser.json())
+app.use(bodyParser.json())
 
-//calls routes
 const routes = require("./routes")
 app.use(routes)
 
@@ -28,31 +22,29 @@ let db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error'))
 db.once('open', function() {
-    // we're connected!
-    console.log("database connected")
+  // we're connected!
+  console.log("database connected")
 
 });
 
 
-const port = process.env.PORT || 3000
+
+// load local VCAP configuration  and service credentials
+var vcapLocal;
+try {
+  vcapLocal = require('./vcap-local.json');
+  console.log("Loaded local VCAP", vcapLocal);
+} catch (e) { }
+
+const appEnvOpts = vcapLocal ? { vcap: vcapLocal} : {}
+
+const appEnv = cfenv.getAppEnv(appEnvOpts);
+
+
+
+
+var port = process.env.PORT || 3000
 app.listen(port, function() {
-    //initialize();
     console.log("To view your app, open this link in your browser: http://localhost:" + port);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

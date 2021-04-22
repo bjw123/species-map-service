@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/species-map-service.iml" filepath="$PROJECT_DIR$/.idea/species-map-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/get-started-node.iml" filepath="$PROJECT_DIR$/.idea/get-started-node.iml" />
     </modules>
   </component>
 </project>
