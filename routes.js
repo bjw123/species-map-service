@@ -17,7 +17,7 @@ router.get('/quokka',async (req, res) => {
 
 router.get('/wgk',async (req, res) => {
     let data = await SpeciesModel.findOne({ name: 'Western Gray Kangaroo' });
-    console.log("Data requested", JSON.parse(data))
+    console.log("Data requested", data)
     res.send(data)
 })
 
